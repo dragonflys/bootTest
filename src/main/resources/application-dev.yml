@@ -24,7 +24,7 @@ spring:
       time-between-eviction-runs-millis: 60000
       #配置一个连接最小生存时间，单位毫秒
       min-evictable-idle-time-millis: 30000
-      validation-query: SELECT 1
+      validation-query: SELECT VERSION()
     
 mybatis:
   type-aliases-package: edu.xidian.boot.model
