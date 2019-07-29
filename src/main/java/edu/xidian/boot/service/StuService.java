@@ -1,5 +1,7 @@
 package edu.xidian.boot.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,6 +18,10 @@ public class StuService {
 
 	public Student getStu(int id) {
 		return stuMapper.getStu(id);
+	}
+
+	public List<Student> getStuAll() {
+		return stuMapper.getStuAll();
 	}
 
 	public void updateStuById(Student student) {

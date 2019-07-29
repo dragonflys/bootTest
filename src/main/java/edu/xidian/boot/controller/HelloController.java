@@ -1,5 +1,10 @@
 package edu.xidian.boot.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -25,8 +30,8 @@ public class HelloController {
 
 	private static final Logger log = LoggerFactory.getLogger(HelloController.class);
 
-	@RequestMapping("/{id}")
-	public ModelAndView sayHello(@PathVariable int id, Model model) {
+	@GetMapping("/{id}")
+	public ModelAndView getStu(@PathVariable int id, Model model) {
 		Student student = stuService.getStu(id);
 		model.addAttribute("stu", student);
 		log.debug("stu is {}", student);
@@ -34,32 +39,27 @@ public class HelloController {
 		return modelAndView;
 	}
 
-	@GetMapping("/login/{name}")
-	public String login(@PathVariable String name, HttpServletRequest request) {
-		HttpSession httpSession = request.getSession();
-		httpSession.setAttribute("name", name);
-		return "login";
-	}
-
-	@GetMapping("/get")
-	public Object get(HttpServletRequest httpServletRequest) {
-		HttpSession httpSession = httpServletRequest.getSession();
-		return httpSession.getAttribute("name");
+	@GetMapping("/all")
+	public ModelAndView getStuAll() {
+		List<Student> list = stuService.getStuAll();
+		ModelAndView modelAndView = new ModelAndView("hello2");
+		modelAndView.addObject("stuList", list);
+		return modelAndView;
 	}
 
 	@GetMapping("/update")
 	public void updateStuById() {
 		Student student = new Student();
-		student.setId(2);
-		student.setSchAddress("河南工业大学");
+		student.setId(6);
+		student.setSchAddress("河南工程大学");
 //		student.setName("王彦龙");
-//		String time = "1989-10-20";
-//		try {
-//			student.setBirth(new Date(new SimpleDateFormat("yyyy-MM-dd").parse(time).getTime()));
-//		} catch (ParseException e) {
-//			log.error("解析时间出错！");
-//			e.printStackTrace();
-//		}
+		String time = "1989-10-20";
+		try {
+			student.setBirth(new Date(new SimpleDateFormat("yyyy-MM-dd").parse(time).getTime()));
+		} catch (ParseException e) {
+			log.error("解析时间出错！");
+			e.printStackTrace();
+		}
 //		student.setAge(29);
 		log.debug("stu is {}", student);
 		stuService.updateStuById(student);
@@ -80,4 +80,16 @@ public class HelloController {
 		stuService.insert(student);
 	}
 
+	@GetMapping("/login/{name}")
+	public String login(@PathVariable String name, HttpServletRequest request) {
+		HttpSession httpSession = request.getSession();
+		httpSession.setAttribute("name", name);
+		return "login";
+	}
+
+	@GetMapping("/get")
+	public Object get(HttpServletRequest httpServletRequest) {
+		HttpSession httpSession = httpServletRequest.getSession();
+		return httpSession.getAttribute("name");
+	}
 }

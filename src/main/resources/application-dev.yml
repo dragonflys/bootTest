@@ -26,6 +26,4 @@ spring:
       min-evictable-idle-time-millis: 30000
       validation-query: SELECT VERSION()
     
-mybatis:
-  type-aliases-package: edu.xidian.boot.model
-  mapper-locations: classpath:mappers/*.xml
+

@@ -3,11 +3,14 @@ package edu.xidian.boot.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class Student implements Serializable {
 	private static final long serialVersionUID = -8581120389973521772L;
 	private Integer id;
 	private String name;
 	private Integer age;
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date birth;
 	private String schAddress;
 
