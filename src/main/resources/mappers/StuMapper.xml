@@ -8,7 +8,9 @@
 			<if test="name != null">name = #{name},</if>
 			<if test="age != null">age = #{age},</if>
 			<if test="birth != null">birth = #{birth},</if>	
-			<if test="schAddress != null">schAddress = #{schAddress}</if>	
+			<if test="schAddress != null">schAddress = #{schAddress},</if>
+			<if test="gender != null">gender = #{gender},</if>
+			<if test="status != null">status = #{status},</if>
 		</set>
 		WHERE id = #{id}
 	</update>
@@ -19,14 +21,18 @@
 			<if test="name != null">name,</if>
 			<if test="age != null">age,</if>
 			<if test="birth != null">birth,</if>
-			<if test="schAddress != null">schAddress</if>
+			<if test="schAddress != null">schAddress,</if>
+			<if test="gender != null">gender,</if>
+			<if test="status != null">status,</if>
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
 			<if test="id != null">#{id},</if>
 			<if test="name != null">#{name},</if>
 			<if test="age != null">#{age},</if>
 			<if test="birth != null">#{birth},</if>
-			<if test="schAddress != null">#{schAddress}</if>
+			<if test="schAddress != null">#{schAddress},</if>
+			<if test="gender != null">#{gender},</if>
+			<if test="status != null">#{status},</if>
 		</trim>
 	</insert>
 

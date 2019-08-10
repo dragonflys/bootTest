@@ -10,3 +10,4 @@ spring:
 mybatis:
   type-aliases-package: edu.xidian.boot.model
   mapper-locations: classpath:mappers/*.xml
+  type-handlers-package: edu.xidian.boot.typehandler

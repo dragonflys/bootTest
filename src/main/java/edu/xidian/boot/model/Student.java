@@ -5,6 +5,9 @@ import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import edu.xidian.boot.Enum.Gender;
+import edu.xidian.boot.Enum.StuStatus;
+
 public class Student implements Serializable {
 	private static final long serialVersionUID = -8581120389973521772L;
 	private Integer id;
@@ -13,18 +16,31 @@ public class Student implements Serializable {
 	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date birth;
 	private String schAddress;
+	private Gender gender;
+	private StuStatus status;
+
+	public StuStatus getStatus() {
+		return status;
+	}
+
+	public void setStatus(StuStatus status) {
+		this.status = status;
+	}
 
 	public Student() {
 		super();
 	}
 
-	public Student(Integer id, String name, Integer age, Date birth, String schAddress) {
+	public Student(Integer id, String name, Integer age, Date birth, String schAddress, Gender gender,
+			StuStatus status) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.age = age;
 		this.birth = birth;
 		this.schAddress = schAddress;
+		this.gender = gender;
+		this.status = status;
 	}
 
 	public Integer getId() {
@@ -67,10 +83,18 @@ public class Student implements Serializable {
 		this.schAddress = schAddress;
 	}
 
+	public Gender getGender() {
+		return gender;
+	}
+
+	public void setGender(Gender gender) {
+		this.gender = gender;
+	}
+
 	@Override
 	public String toString() {
 		return "Student [id=" + id + ", name=" + name + ", age=" + age + ", birth=" + birth + ", schAddress="
-				+ schAddress + "]";
+				+ schAddress + ", gender=" + gender + ", status=" + status + "]";
 	}
 
 }

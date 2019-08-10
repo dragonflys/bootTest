@@ -51,16 +51,14 @@ public class HelloController {
 	public void updateStuById() {
 		Student student = new Student();
 		student.setId(6);
-		student.setSchAddress("河南工程大学");
-//		student.setName("王彦龙");
-		String time = "1989-10-20";
+		student.setSchAddress("南京");
+		String time = "1993-10-01";
 		try {
 			student.setBirth(new Date(new SimpleDateFormat("yyyy-MM-dd").parse(time).getTime()));
 		} catch (ParseException e) {
 			log.error("解析时间出错！");
 			e.printStackTrace();
 		}
-//		student.setAge(29);
 		log.debug("stu is {}", student);
 		stuService.updateStuById(student);
 	}
@@ -69,14 +67,7 @@ public class HelloController {
 	public void insert() {
 		Student student = new Student();
 		student.setId(6);
-		student.setName("张双丽");
-		student.setAge(0);
-//		try {
-//			student.setBirth(new Date(new SimpleDateFormat("yyyy-MM-dd").parse("1990-02-08").getTime()));
-//		} catch (ParseException e) {
-//			log.error("解析生日时间出错");
-//			e.printStackTrace();
-//		}
+		student.setName("赵四");
 		stuService.insert(student);
 	}
 
