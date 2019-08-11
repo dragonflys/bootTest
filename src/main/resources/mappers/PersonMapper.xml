@@ -1,38 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="edu.xidian.boot.dao.StuMapper">
+<mapper namespace="edu.xidian.boot.dao.PersonMapper">
 
-	<update id = "updateStuById">
-		UPDATE student
+	<update id = "updatePerById">
+		UPDATE person
 		<set>
 			<if test="name != null">name = #{name},</if>
 			<if test="age != null">age = #{age},</if>
 			<if test="birth != null">birth = #{birth},</if>	
-			<if test="schAddress != null">schAddress = #{schAddress},</if>
+			<if test="address != null">address = #{address},</if>
 			<if test="gender != null">gender = #{gender},</if>
-			<if test="status != null">status = #{status},</if>
+			<if test="marital != null">marital = #{marital},</if>
 		</set>
 		WHERE id = #{id}
 	</update>
-	<insert id="insert" parameterType="Student">
-		insert into student
+	<insert id="insert" parameterType="person">
+		insert into person
 		<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="id != null">id,</if>
 			<if test="name != null">name,</if>
 			<if test="age != null">age,</if>
 			<if test="birth != null">birth,</if>
-			<if test="schAddress != null">schAddress,</if>
+			<if test="address != null">address,</if>
 			<if test="gender != null">gender,</if>
-			<if test="status != null">status,</if>
+			<if test="marital != null">marital,</if>
 		</trim>
 		<trim prefix="values (" suffix=")" suffixOverrides=",">
-			<if test="id != null">#{id},</if>
 			<if test="name != null">#{name},</if>
 			<if test="age != null">#{age},</if>
 			<if test="birth != null">#{birth},</if>
-			<if test="schAddress != null">#{schAddress},</if>
+			<if test="address != null">#{address},</if>
 			<if test="gender != null">#{gender},</if>
-			<if test="status != null">#{status},</if>
+			<if test="marital != null">#{marital},</if>
 		</trim>
 	</insert>
 

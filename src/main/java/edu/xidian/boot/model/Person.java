@@ -5,42 +5,35 @@ import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import edu.xidian.boot.Enum.Gender;
-import edu.xidian.boot.Enum.StuStatus;
+import edu.xidian.boot.Enum.Marital;
 
-public class Student implements Serializable {
+public class Person implements Serializable {
 	private static final long serialVersionUID = -8581120389973521772L;
 	private Integer id;
 	private String name;
 	private Integer age;
 	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date birth;
-	private String schAddress;
-	private Gender gender;
-	private StuStatus status;
+	private String address;
+	/**
+	 * gender true:男 -> 1 false:女 -> 2
+	 */
+	private Boolean gender;
+	private Marital marital;
 
-	public StuStatus getStatus() {
-		return status;
-	}
-
-	public void setStatus(StuStatus status) {
-		this.status = status;
-	}
-
-	public Student() {
+	public Person() {
 		super();
 	}
 
-	public Student(Integer id, String name, Integer age, Date birth, String schAddress, Gender gender,
-			StuStatus status) {
+	public Person(Integer id, String name, Integer age, Date birth, String address, Boolean gender, Marital marital) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.age = age;
 		this.birth = birth;
-		this.schAddress = schAddress;
+		this.address = address;
 		this.gender = gender;
-		this.status = status;
+		this.marital = marital;
 	}
 
 	public Integer getId() {
@@ -76,25 +69,33 @@ public class Student implements Serializable {
 	}
 
 	public String getSchAddress() {
-		return schAddress;
+		return address;
 	}
 
-	public void setSchAddress(String schAddress) {
-		this.schAddress = schAddress;
+	public void setSchAddress(String address) {
+		this.address = address;
 	}
 
-	public Gender getGender() {
+	public Boolean getGender() {
 		return gender;
 	}
 
-	public void setGender(Gender gender) {
+	public void setGender(Boolean gender) {
 		this.gender = gender;
+	}
+
+	public Marital getMarital() {
+		return marital;
+	}
+
+	public void setMarital(Marital marital) {
+		this.marital = marital;
 	}
 
 	@Override
 	public String toString() {
-		return "Student [id=" + id + ", name=" + name + ", age=" + age + ", birth=" + birth + ", schAddress="
-				+ schAddress + ", gender=" + gender + ", status=" + status + "]";
+		return "Person [id=" + id + ", name=" + name + ", age=" + age + ", birth=" + birth + ", address=" + address
+				+ ", gender=" + gender + ", marital=" + marital + "]";
 	}
 
 }
