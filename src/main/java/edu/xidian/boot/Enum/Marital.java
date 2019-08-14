@@ -1,7 +1,7 @@
 package edu.xidian.boot.Enum;
 
 public enum Marital implements BaseEnum {
-	MARRIED(200, "已婚"), UNMARRIED(300, "未婚"), ENGAGED(400, "订婚");
+	MARRIED(20, "已婚"), UNMARRIED(30, "未婚"), ENGAGED(40, "订婚");
 
 	private int code;
 	private String desc;

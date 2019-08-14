@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import edu.xidian.boot.dao.PersonMapper;
+import edu.xidian.boot.model.PerVO;
 import edu.xidian.boot.model.Person;
 
 @Service
@@ -16,7 +17,7 @@ public class PersonService {
 	@Autowired
 	PersonMapper mapper;
 
-	public Person getStu(int id) {
+	public PerVO getStu(int id) {
 		return mapper.getPerById(id);
 	}
 

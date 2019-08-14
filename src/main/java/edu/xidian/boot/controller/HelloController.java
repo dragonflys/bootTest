@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import edu.xidian.boot.Enum.Marital;
+import edu.xidian.boot.model.PerVO;
 import edu.xidian.boot.model.Person;
 import edu.xidian.boot.service.PersonService;
 
@@ -29,7 +31,7 @@ public class HelloController {
 
 	@GetMapping("/{id}")
 	public ModelAndView getPer(@PathVariable int id, Model model) {
-		Person person = perService.getStu(id);
+		PerVO person = perService.getStu(id);
 		model.addAttribute("stu", person);
 		log.debug("stu is {}", person);
 		ModelAndView modelAndView = new ModelAndView("hello");
@@ -44,24 +46,20 @@ public class HelloController {
 		return modelAndView;
 	}
 
-	@GetMapping("/update")
-	public void updatePerById() {
-//		Person person = new Person(1, "赵四", 30, null, "广州", Gender.MAN, Marital.UNMARRIED);
-//		try {
-//			person.setBirth(new Date(new SimpleDateFormat("yyyy-MM-dd").parse("1993-03-20").getTime()));
-//		} catch (ParseException e) {
-//			log.error("解析时间出错！");
-//			e.printStackTrace();
-//		}
-//		log.debug("stu is {}", person);
-//		perService.updatePerById(person);
+	@GetMapping("/update/{id}")
+	public void updatePerById(@PathVariable Integer id) {
+		Person person = new Person();
+		person.setMarital(Marital.ENGAGED);
+		person.setId(id);
+		log.debug("stu is {}", person);
+		perService.updatePerById(person);
 	}
 
 	@GetMapping("/insert")
 	public void insert() {
-//		Person person = new Person(3, "王五", 22, null, "郑州", Gender.WOMAN, Marital.ENGAGED);
-//		person.setId(null);
-//		perService.insert(person);
+		Person person = new Person(3, "王五", 22, null, "郑州", false, Marital.ENGAGED);
+		person.setId(null);
+		perService.insert(person);
 	}
 
 	@GetMapping("/login/{name}")
