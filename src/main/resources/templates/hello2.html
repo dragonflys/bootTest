@@ -10,16 +10,20 @@
 		<tr>
 			<th>id</th>
 			<th>姓名</th>
+			<th>性别</th>
 			<th>年龄</th>
+			<th>婚姻</th>
 			<th>生日</th>
 			<th>地址</th>
 		</tr>
-		<tr th:each="st : ${stuList}">
-			<th th:text="${st.id}"></th>
-			<th th:text="${st.name}"></th>
-			<th th:text="${st.age}"></th>
-			<th th:text="${st.birth}"></th>
-			<th th:text="${st.schAddress}"></th>
+		<tr th:each="per : ${perList}">
+			<th th:text="${per.id}"></th>
+			<th th:text="${per.name}"></th>
+			<th th:text="${per.gender}"></th>
+			<th th:text="${per.age}"></th>
+			<th th:text="${per.marital}"></th>
+			<th th:text="${per.birth}"></th>
+			<th th:text="${per.schAddress}"></th>
 		</tr>
 	</table>
 </body>
