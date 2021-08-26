@@ -1,17 +1,18 @@
 server:
-  port: 8888
+  port: 8080
 
 logging:
-  path: ./logs
   level:
     edu.xidian.boot: debug
+  file:
+    path: ./logs
 
 spring:
   datasource:
-    url: jdbc:postgresql://127.0.0.1:5432/postgres
-    username: postgres
-    password: 123456
-    driver-class-name: org.postgresql.Driver
+    url: jdbc:mysql://localhost:3306/demo
+    username: root
+    password: 1qaz@WSX
+    driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
     #初始化大小，最小，最大连接数
@@ -25,5 +26,9 @@ spring:
       #配置一个连接最小生存时间，单位毫秒
       min-evictable-idle-time-millis: 30000
       validation-query: SELECT VERSION()
-    
 
+mybatis:
+  type-aliases-package: edu.xidian.boot.model
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath:mappers/*.xml
