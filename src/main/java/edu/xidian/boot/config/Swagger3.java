@@ -14,7 +14,7 @@ public class Swagger3 {
     public Docket docket() {
         return new Docket(DocumentationType.OAS_30).apiInfo(
                 new ApiInfoBuilder()
-                        .contact(new Contact("longan", "", "825***@qq.com"))
+                        .contact(new Contact("longan", "", "***@qq.com"))
                         .title("Swagger3 demo")
                         .build()
         );
